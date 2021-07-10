@@ -14,3 +14,11 @@ export interface MovieProps {
   }>;
   Runtime: string;
 }
+
+export interface MoviesContextData {
+  genres: GenreResponseProps[];
+  selectedGenreId: number;
+  selectGenreId: (id: number) => void;
+  getSelectedGenre: () => GenreResponseProps;
+  getMovies: () => MovieProps[];
+}

@@ -1,19 +1,15 @@
 import React from "react";
 
 import { Button } from "./Button";
-import { GenreResponseProps } from "./interface";
+import { useMovies } from "../hooks/useMovies";
 
-interface SideBarProps {
-  genres: GenreResponseProps[];
-  selectedGenreId: number;
-  handleClickButton: (id: number) => void;
-}
+const SideBar = () => {
+  const { genres, selectedGenreId, selectGenreId } = useMovies();
 
-export const SideBar = ({
-  genres,
-  selectedGenreId,
-  handleClickButton,
-}: SideBarProps) => {
+  function handleClickButton(id: number) {
+    selectGenreId(id);
+  }
+
   return (
     <nav className="sidebar">
       <span>
@@ -34,3 +30,5 @@ export const SideBar = ({
     </nav>
   );
 };
+
+export default SideBar;

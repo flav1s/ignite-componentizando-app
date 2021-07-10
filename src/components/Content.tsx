@@ -1,13 +1,13 @@
 import React from "react";
 import { MovieProps, GenreResponseProps } from "./interface";
 import { MovieCard } from "./MovieCard";
+import { useMovies } from "../hooks/useMovies";
 
-interface ContentProps {
-  selectedGenre: GenreResponseProps;
-  movies: MovieProps[];
-}
+const Content = () => {
+  const { getSelectedGenre, getMovies } = useMovies();
+  const selectedGenre = getSelectedGenre();
+  const movies = getMovies();
 
-export const Content = ({ selectedGenre, movies }: ContentProps) => {
   return (
     <div className="container">
       <header>
@@ -32,3 +32,5 @@ export const Content = ({ selectedGenre, movies }: ContentProps) => {
     </div>
   );
 };
+
+export default Content;
