@@ -1,5 +1,5 @@
 import React from "react";
-import { MovieProps, GenreResponseProps } from "./interface";
+
 import { MovieCard } from "./MovieCard";
 import { useMovies } from "../hooks/useMovies";
 
