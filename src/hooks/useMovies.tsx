@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import {
   GenreResponseProps,
   MovieProps,
@@ -36,9 +42,12 @@ const MoviesProvider: React.FC = ({ children }) => {
       });
   }, [selectedGenreId]);
 
-  const selectGenreId = (id: number) => setSelectedGenreId(id);
-  const getMovies = () => movies;
-  const getSelectedGenre = () => selectedGenre;
+  const selectGenreId = useCallback(
+    (id: number) => setSelectedGenreId(id),
+    [setSelectedGenreId]
+  );
+  const getMovies = useCallback(() => movies, [movies]);
+  const getSelectedGenre = useCallback(() => selectedGenre, [selectedGenre]);
 
   const contextData: MoviesContextData = {
     genres,
